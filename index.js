@@ -8,7 +8,7 @@ app.get("/", (req, res) => {
 app.use(express.json());
 
 const corsOptions = {
-  origin: ["http://localhost:3000"],
+  origin: ["https://beedatatech.com"],
 };
 app.use(cors(corsOptions));
 
