@@ -23,6 +23,15 @@ const db = mysql.createPool({
   queueLimit: 0,
 });
 
+db.getConnection((err, connection) => {
+  if (err) {
+    console.error("Database connection failed:", err.stack);
+    process.exit(1);
+  }
+  console.log("Connected to MySQL database as ID " + connection.threadId);
+  connection.release();
+});
+
 app.get("/data", (req, res) => {
     const sql = "SELECT * FROM dummy"
     db.query(sql, (err, data) => {
